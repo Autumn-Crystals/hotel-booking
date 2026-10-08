@@ -1,0 +1,22 @@
+# Node.js dependencies
+node_modules/
+
+# SQLite Database and WAL journals (auto-created and seeded on first run)
+hotel.db
+hotel.db-shm
+hotel.db-wal
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment and secrets
+.env
+.env.local
+
+# Operating system files
+.DS_Store
+Thumbs.db

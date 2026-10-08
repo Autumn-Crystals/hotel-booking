@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login – StayEase Hotel</title>
+  <meta name="description" content="Sign in or create an account to book hotel rooms at StayEase." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- Login Page: centered card with two tabs – Login and Register -->
+<div class="login-page">
+
+  <div class="login-card">
+
+    <!-- Header section with hotel branding -->
+    <div class="login-header">
+      <div class="hotel-icon">
+        <svg viewBox="0 0 24 24" width="36" height="36" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 21h18"/>
+          <path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"/>
+          <path d="M9 7h1"/>
+          <path d="M14 7h1"/>
+          <path d="M9 11h1"/>
+          <path d="M14 11h1"/>
+          <path d="M9 15h1"/>
+          <path d="M14 15h1"/>
+          <path d="M10 21v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4"/>
+        </svg>
+      </div>
+      <h1>StayEase Hotel</h1>
+      <p>Your comfort, our priority</p>
+    </div>
+
+    <div class="login-body">
+
+      <!-- Tab switcher: Login | Register -->
+      <div class="tabs" role="tablist">
+        <button class="tab-btn active" id="tab-login"    onclick="switchTab('login')"    role="tab" aria-selected="true">Login</button>
+        <button class="tab-btn"        id="tab-register" onclick="switchTab('register')" role="tab" aria-selected="false">Register</button>
+      </div>
+
+      <!-- LOGIN FORM -->
+      <div class="tab-content active" id="content-login">
+        <form id="login-form" onsubmit="handleLogin(event)">
+          <div class="form-group">
+            <label for="login-email">Email Address</label>
+            <input type="email" id="login-email" class="form-control" placeholder="you@example.com" required />
+          </div>
+          <div class="form-group">
+            <label for="login-password">Password</label>
+            <input type="password" id="login-password" class="form-control" placeholder="Enter your password" required />
+          </div>
+          <button type="submit" class="btn btn-primary btn-full" id="login-btn">
+            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m15.5 8.5 2 2"/>
+              <path d="m13.5 10.5 2 2"/>
+              <circle cx="7.5" cy="15.5" r="5.5"/>
+              <path d="m11.4 11.6 9.6-9.6"/>
+            </svg>
+            <span>Sign In</span>
+          </button>
+        </form>
+
+        <!-- Demo credentials hint (helpful for viva demo) -->
+        <div style="margin-top: 1.2rem; padding: 0.9rem; background: var(--blue-light); border-radius: var(--radius-sm); font-size: 0.82rem; color: var(--text-secondary); line-height: 1.7;">
+          <strong style="color:var(--text-primary);display:block;margin-bottom:0.3rem;">Demo credentials:</strong>
+          <div style="display:flex;align-items:center;gap:0.4rem;">
+            <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span><strong>Guest:</strong> guest@hotel.com / guest123</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:0.4rem;">
+            <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span><strong>Admin:</strong> admin@hotel.com / admin123</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- REGISTER FORM -->
+      <div class="tab-content" id="content-register">
+        <form id="register-form" onsubmit="handleRegister(event)">
+          <div class="form-group">
+            <label for="reg-name">Full Name</label>
+            <input type="text" id="reg-name" class="form-control" placeholder="John Doe" required />
+          </div>
+          <div class="form-group">
+            <label for="reg-email">Email Address</label>
+            <input type="email" id="reg-email" class="form-control" placeholder="you@example.com" required />
+          </div>
+          <div class="form-group">
+            <label for="reg-password">Password <span style="color:var(--text-muted);font-weight:400">(min 6 chars)</span></label>
+            <input type="password" id="reg-password" class="form-control" placeholder="Create a password" required minlength="6" />
+          </div>
+          <button type="submit" class="btn btn-yellow btn-full" id="register-btn">
+            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <line x1="19" y1="8" x2="19" y2="14"/>
+              <line x1="22" y1="11" x2="16" y2="11"/>
+            </svg>
+            <span>Create Account</span>
+          </button>
+        </form>
+      </div>
+
+    </div><!-- /.login-body -->
+  </div><!-- /.login-card -->
+
+</div><!-- /.login-page -->
+
+<!-- Toast container (shared across all pages) -->
+<div class="toast-container" id="toast-container"></div>
+
+<script src="icons.js"></script>
+<script src="login.js"></script>
+</body>
+</html>
